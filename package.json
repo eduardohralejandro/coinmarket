@@ -9,12 +9,26 @@
     "start": "node server.js",
     "heroku-postbuild": "webpack -p"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint . --fix"
+    ],
+    "src/**/*.scss": [
+      "stylelint --syntax scss --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "author": "Eduardo Hernandez",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^3.0.0",
@@ -24,6 +38,8 @@
     "eslint-plugin-react": "^7.18.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
